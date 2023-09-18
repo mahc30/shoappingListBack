@@ -1,4 +1,4 @@
-package com.shoapping.list.ShOAPpingList.infrastructure.controller;
+package com.shoapping.list.ShOAPpingList.infrastructure.controller.REST;
 
 import com.shoapping.list.ShOAPpingList.application.dto.request.ProductRequest;
 import com.shoapping.list.ShOAPpingList.application.dto.response.ProductResponse;

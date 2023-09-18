@@ -19,6 +19,10 @@ public class ProductJpaAdapter implements IProductPersistencePort {
 
     @Override
     public void saveProduct(Product product){
+        System.out.println("JPAaDapter:");
+        System.out.println(product.getPrice());
+        System.out.println(product.getId());
+        System.out.println(product.getName());
         if(productRepository.findById(product.getId()).isPresent()){
             throw new ProductAlreadyExistsException();
         }

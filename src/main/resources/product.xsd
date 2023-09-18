@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://localhost:8080/soap/product"
+           xmlns="http://localhost:8080/soap/product"
+           elementFormDefault="qualified">
+
+    <xs:element name="SaveProductRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long" minOccurs="1"/>
+                <xs:element name="name" type="xs:string" minOccurs="1"/>
+                <xs:element name="note" type="xs:string" minOccurs="1"/>
+                <xs:element name="price" type="xs:int" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetProductRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long" minOccurs="1"/>
+                <xs:element name="name" type="xs:string" minOccurs="1"/>
+                <xs:element name="note" type="xs:string" minOccurs="1"/>
+                <xs:element name="price" type="xs:int" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SoapProduct">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long" minOccurs="1"/>
+                <xs:element name="name" type="xs:string" minOccurs="1"/>
+                <xs:element name="note" type="xs:string" minOccurs="1"/>
+                <xs:element name="price" type="xs:int" minOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

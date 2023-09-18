@@ -6,6 +6,7 @@ import com.shoapping.list.ShOAPpingList.application.mapper.ProductRequestMapper;
 import com.shoapping.list.ShOAPpingList.application.mapper.ProductResponseMapper;
 import com.shoapping.list.ShOAPpingList.domain.api.IProductServicePort;
 import com.shoapping.list.ShOAPpingList.domain.models.Product;
+import localhost._8080.soap.product.SaveProductRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,11 @@ public class ProductHandler implements IProductHandler{
         productServicePort.saveProduct(product);
     }
 
+    public void saveProduct(SaveProductRequest productRequest) {
+        Product product = productRequestMapper.toProduct(productRequest);
+        productServicePort.saveProduct(product);
+    }
+
     @Override
     public List<ProductResponse> getAllProduct() {
         return productResponseMapper.toResponseList(productServicePort.getAllProducts());
@@ -35,6 +41,7 @@ public class ProductHandler implements IProductHandler{
         Product product = productServicePort.getProduct((productNumber));
         return productResponseMapper.toResponse(product);
     }
+
 
     @Override
     public void updateProduct(ProductRequest productRequest) {
