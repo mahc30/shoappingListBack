@@ -48,7 +48,7 @@ public class ProductHandler implements IProductHandler{
         Product oldProduct = productServicePort.getProduct(productRequest.getId());
         Product newProduct = productRequestMapper.toProduct(productRequest);
         newProduct.setId(oldProduct.getId());
-        productServicePort.saveProduct(newProduct);
+        productServicePort.updateProduct(newProduct);
     }
 
     @Override

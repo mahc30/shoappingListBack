@@ -75,9 +75,9 @@ public class ProductController {
             @ApiResponse(code = 200, message = "Product deleted"),
             @ApiResponse(code = 404, message = "Product not found")
     })
-    @DeleteMapping("/{productNumber}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable Long productNumber) {
-        productHandler.deleteProduct(productNumber);
+    @DeleteMapping("/{number}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long number) {
+        productHandler.deleteProduct(number);
         return ResponseEntity.noContent().build();
     }
 }

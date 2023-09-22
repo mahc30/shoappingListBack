@@ -19,4 +19,4 @@ spring:
         show_sql: false
 logging:
   level:
-    root: DEBUG
+    root: INFO
