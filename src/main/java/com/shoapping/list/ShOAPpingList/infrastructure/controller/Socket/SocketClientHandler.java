@@ -1,17 +1,17 @@
 package com.shoapping.list.ShOAPpingList.infrastructure.controller.Socket;
 
-import lombok.extern.java.Log;
-import net.bytebuddy.implementation.bytecode.Throw;
+import com.shoapping.list.ShOAPpingList.application.dto.request.ProductRequest;
+import com.shoapping.list.ShOAPpingList.application.handler.ProductHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.logging.Logger;
-
 public class SocketClientHandler extends Thread {
 
     private Socket socket;
     private int id;
-    private BufferedReader inputStream;
+    protected BufferedReader inputStream;
     private PrintWriter outputStream;
 
     public SocketClientHandler(Socket socket, int id){
@@ -26,17 +26,27 @@ public class SocketClientHandler extends Thread {
             this.inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             this.outputStream = new PrintWriter(socket.getOutputStream(), true);
 
-            String clientMessage = "";
+            String clientMessage = inputStream.readLine();
 
             while(!clientMessage.equals("se fini")){
-                clientMessage = inputStream.readLine();
+                outputStream.println("ACK: " + clientMessage);
                 System.out.println("Client " + this.id + ": " + clientMessage);
+                clientMessage = inputStream.readLine();
             }
 
-            System.out.println("CLIENT HANDLER CLOSE");
-            socket.close();
         }catch (Exception e){
+            e.printStackTrace();
 
+        }finally {
+            outputStream.println("ADIOS");
+
+            try {
+                socket.close();
+                System.out.println("SOCKET " + id + " CERRADO");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            interrupt();
         }
     }
 }

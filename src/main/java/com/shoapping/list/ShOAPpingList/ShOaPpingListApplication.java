@@ -19,7 +19,7 @@ public class ShOaPpingListApplication {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void doSomethingAfterStartup() {
-		Server server = new Server();
+		Server server = Server.getInstance();
 	}
 }
 

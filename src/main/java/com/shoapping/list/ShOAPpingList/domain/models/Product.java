@@ -13,4 +13,11 @@ public class Product {
     private String name;
     private String note;
     private int price;
+
+    @Override
+    public String toString(){
+        return String.format("Id:%d Nombre: %s Desc:%s Price:%d", id, name, note, price);
+    }
 }
+
+

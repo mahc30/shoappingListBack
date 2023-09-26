@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Getter
 @Setter
-@XmlRootElement(name = "ProductResponse")
 public class ProductResponse {
     private Long id;
     private String name;
