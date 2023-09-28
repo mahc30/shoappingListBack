@@ -29,7 +29,7 @@ public class SocketClientHandler extends Thread {
             String clientMessage = inputStream.readLine();
 
             while(!clientMessage.equals("se fini")){
-                outputStream.println("ACK: " + clientMessage);
+                write("ACK: " + clientMessage);
                 System.out.println("Client " + this.id + ": " + clientMessage);
                 clientMessage = inputStream.readLine();
             }
@@ -48,5 +48,30 @@ public class SocketClientHandler extends Thread {
             }
             interrupt();
         }
+    }
+
+    public boolean isConnected() {
+
+        if (socket == null) {
+            return false;
+        }
+        return socket.isConnected();
+    }
+
+    public boolean isClosed() {
+
+        if (socket == null) {
+            return true;
+        }
+        return socket.isClosed();
+    }
+
+    public void write(String msg) {
+        if (outputStream == null) {
+            System.out.println(" outputStream is null no se puede enviar");
+            return;
+        }
+        System.out.println(" se envio " + msg);
+        outputStream.println(msg);
     }
 }
